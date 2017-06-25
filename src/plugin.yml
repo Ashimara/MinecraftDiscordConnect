@@ -1,4 +1,15 @@
 name: MinecraftDiscordConnect
-version: 1.0
+version: 1.0.1
 author: Sorp
+authors: [Sorp, Ashimara]
 main: eu.sorp.minecraftdiscordconnect.MinecraftDiscordConnect
+commands:
+  discordconnect:
+    description: Connects the server to your Discord Bot
+    permission: minecraftdiscordconnect.discordconnect
+    usage: /discordconnect
+  discorddisconnect:
+    description: Disconnects the server from your Discord Bot
+    permission: minecraftdiscordconnect.discorddisconnect
+    usage: /discorddisconnect
+  
