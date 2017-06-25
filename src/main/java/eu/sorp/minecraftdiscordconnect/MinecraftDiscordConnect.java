@@ -2,6 +2,8 @@ package eu.sorp.minecraftdiscordconnect;
 
 import eu.sorp.minecraftdiscordconnect.command.ConnectDiscordCommand;
 import eu.sorp.minecraftdiscordconnect.command.DisconnectDiscordCommand;
+import eu.sorp.minecraftdiscordconnect.command.RecieveChannelIDsCommand;
+import eu.sorp.minecraftdiscordconnect.command.SendChannelIDsCommand;
 import eu.sorp.minecraftdiscordconnect.discord.DiscordClient;
 import eu.sorp.minecraftdiscordconnect.discord.listener.MessageListener;
 import eu.sorp.minecraftdiscordconnect.discord.listener.ReadyListener;
@@ -61,6 +63,8 @@ public class MinecraftDiscordConnect extends JavaPlugin {
     public void registerCommands(){
         getCommand("discordconnect").setExecutor(new ConnectDiscordCommand());
         getCommand("discorddisconnect").setExecutor(new DisconnectDiscordCommand());
+        getCommand("sendchannelids").setExecutor(new SendChannelIDsCommand());
+        getCommand("recievechannelids").setExecutor(new RecieveChannelIDsCommand());
     }
     
 }

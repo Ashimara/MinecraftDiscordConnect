@@ -6,10 +6,18 @@ main: eu.sorp.minecraftdiscordconnect.MinecraftDiscordConnect
 commands:
   discordconnect:
     description: Connects the server to your Discord Bot
-    permission: minecraftdiscordconnect.discordconnect
+    permission: minecraftdiscordconnect.command.discordconnect
     usage: /discordconnect
   discorddisconnect:
     description: Disconnects the server from your Discord Bot
-    permission: minecraftdiscordconnect.discorddisconnect
+    permission: minecraftdiscordconnect.command.discorddisconnect
     usage: /discorddisconnect
+  sendchannelids:
+    description: Edits your SendChannelIDs
+    permission: minecraftdiscordconnect.command.discorddisconnect
+    usage: /sendchannelids <ChannelIDs...>
+  recievechannelids:
+    description: Edits your RecieveChannelIDs
+    permission: minecraftdiscordconnect.command.discorddisconnect
+    usage: /recievechannelids <ChannelIDs...>
   
