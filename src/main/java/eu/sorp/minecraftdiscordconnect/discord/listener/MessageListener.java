@@ -13,11 +13,15 @@ public class MessageListener implements IListener<MessageReceivedEvent>{
 
     @Override
     public void handle(MessageReceivedEvent event) {
-        String discordMsg = MinecraftDiscordConnect.config.discordMessage;
-        discordMsg = discordMsg.replaceAll("%u%", event.getMessage().getAuthor().getDisplayName(event.getGuild()));
-        discordMsg = discordMsg.replaceAll("%m%", event.getMessage().getContent());
-        if(event.getMessage().getContent().length() >= 1)
-            Connector.sendMinecraftMessage(discordMsg);
+        for(String channelID : MinecraftDiscordConnect.config.recieveChannelIDs){
+            if(event.getChannel().getLongID() == Long.parseLong(channelID)){ 
+                String discordMsg = MinecraftDiscordConnect.config.discordMessage;
+                discordMsg = discordMsg.replaceAll("%u%", event.getMessage().getAuthor().getDisplayName(event.getGuild()));
+                discordMsg = discordMsg.replaceAll("%m%", event.getMessage().getContent());
+                if(event.getMessage().getContent().length() >= 1)
+                    Connector.sendMinecraftMessage(discordMsg);
+            }
+        }
     }
     
 }
