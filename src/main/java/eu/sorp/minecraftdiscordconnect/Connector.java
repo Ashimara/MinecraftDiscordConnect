@@ -11,8 +11,9 @@ public class Connector {
     }
     
     public static void sendDiscordMessage(String message){
-        for(String channelID : MinecraftDiscordConnect.config.sendChannelIDs)
+        for(String channelID : MinecraftDiscordConnect.config.sendChannelIDs){
             MinecraftDiscordConnect.client.getChannelByID(Long.parseLong(channelID)).sendMessage(message);
+        }
     }
     
 }
