@@ -2,7 +2,7 @@ package eu.sorp.minecraftdiscordconnect;
 
 /**
  *
- * @author sorp
+ * @author sorp, ashimara
  */
 public class Config {
     
@@ -17,6 +17,7 @@ public class Config {
     public String joinMessage;
     public String quitMessage;
     public String chatMessage;
+    public String discordMessage;
     
     public Config(){
         
@@ -29,6 +30,7 @@ public class Config {
         MinecraftDiscordConnect.instance.getConfig().addDefault("messages.joinMessage", "%u% joined the game");
         MinecraftDiscordConnect.instance.getConfig().addDefault("messages.quitMessage", "%u% left the game");
         MinecraftDiscordConnect.instance.getConfig().addDefault("messages.chatMessage", "<%u%> %m%");
+        MinecraftDiscordConnect.instance.getConfig().addDefault("messages.discordMessage", "[Discord] <%u%> %m%");
         MinecraftDiscordConnect.instance.getConfig().options().copyDefaults(true);
         MinecraftDiscordConnect.instance.saveConfig();
         
@@ -46,6 +48,7 @@ public class Config {
         joinMessage = MinecraftDiscordConnect.instance.getConfig().getString("messages.joinMessage"); 
         quitMessage = MinecraftDiscordConnect.instance.getConfig().getString("messages.quitMessage"); 
         chatMessage = MinecraftDiscordConnect.instance.getConfig().getString("messages.chatMessage"); 
+        discordMessage = MinecraftDiscordConnect.instance.getConfig().getString("messages.discordMessage"); 
     }
     
 }
