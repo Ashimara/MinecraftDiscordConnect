@@ -2,7 +2,7 @@ package eu.sorp.minecraftdiscordconnect;
 
 /**
  *
- * @author sorp
+ * @author sorp, ashimara
  */
 public class Connector {
     
@@ -11,8 +11,8 @@ public class Connector {
     }
     
     public static void sendDiscordMessage(String message){
-        long channelID = Long.parseLong(MinecraftDiscordConnect.config.channelID);
-        MinecraftDiscordConnect.client.getChannelByID(channelID).sendMessage(message);
+        for(String channelID : MinecraftDiscordConnect.config.sendChannelIDs)
+            MinecraftDiscordConnect.client.getChannelByID(Long.parseLong(channelID)).sendMessage(message);
     }
     
 }
