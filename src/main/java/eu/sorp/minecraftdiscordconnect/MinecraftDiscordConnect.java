@@ -1,5 +1,7 @@
 package eu.sorp.minecraftdiscordconnect;
 
+import eu.sorp.minecraftdiscordconnect.command.ConnectDiscordCommand;
+import eu.sorp.minecraftdiscordconnect.command.DisconnectDiscordCommand;
 import eu.sorp.minecraftdiscordconnect.discord.DiscordClient;
 import eu.sorp.minecraftdiscordconnect.discord.listener.MessageListener;
 import eu.sorp.minecraftdiscordconnect.listener.ChatListener;
@@ -11,7 +13,7 @@ import sx.blah.discord.api.events.EventDispatcher;
 
 /**
  *
- * @author sorp
+ * @author sorp, ashimara
  */
 public class MinecraftDiscordConnect extends JavaPlugin {
 
@@ -31,10 +33,11 @@ public class MinecraftDiscordConnect extends JavaPlugin {
             return;
         }
         
-        client = DiscordClient.createClient(config.token);
+        client = DiscordClient.createClient(config.token); 
         
         registerDiscordListeners();
         registerMinecraftListeners();
+        registerCommands();
     }
 
     @Override
@@ -52,6 +55,11 @@ public class MinecraftDiscordConnect extends JavaPlugin {
     public void registerDiscordListeners(){
         EventDispatcher eventDispatcher = client.getDispatcher();
         if(config.connectDiscordMessages) eventDispatcher.registerListener(new MessageListener());
+    }
+    
+    public void registerCommands(){
+        getCommand("discordconnect").setExecutor(new ConnectDiscordCommand());
+        getCommand("discorddisconnect").setExecutor(new DisconnectDiscordCommand());
     }
     
 }
