@@ -8,7 +8,7 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
 
 /**
  *
- * @author sorp
+ * @author sorp, ashimara
  */
 public class ChatListener implements Listener {
     

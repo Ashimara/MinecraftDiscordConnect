@@ -9,7 +9,7 @@ import org.bukkit.event.player.PlayerQuitEvent;
 
 /**
  *
- * @author sorp
+ * @author sorp, ashimara
  */
 public class JoinListener implements Listener {
     

@@ -4,6 +4,7 @@ import eu.sorp.minecraftdiscordconnect.command.ConnectDiscordCommand;
 import eu.sorp.minecraftdiscordconnect.command.DisconnectDiscordCommand;
 import eu.sorp.minecraftdiscordconnect.discord.DiscordClient;
 import eu.sorp.minecraftdiscordconnect.discord.listener.MessageListener;
+import eu.sorp.minecraftdiscordconnect.discord.listener.ReadyListener;
 import eu.sorp.minecraftdiscordconnect.listener.ChatListener;
 import eu.sorp.minecraftdiscordconnect.listener.JoinListener;
 import org.bukkit.plugin.PluginManager;
@@ -36,7 +37,6 @@ public class MinecraftDiscordConnect extends JavaPlugin {
         client = DiscordClient.createClient(config.token); 
         
         registerDiscordListeners();
-        registerMinecraftListeners();
         registerCommands();
     }
 
@@ -54,6 +54,7 @@ public class MinecraftDiscordConnect extends JavaPlugin {
     
     public void registerDiscordListeners(){
         EventDispatcher eventDispatcher = client.getDispatcher();
+        eventDispatcher.registerListener(new ReadyListener());
         if(config.connectDiscordMessages) eventDispatcher.registerListener(new MessageListener());
     }
     

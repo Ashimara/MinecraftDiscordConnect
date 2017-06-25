@@ -18,9 +18,10 @@ public class DisconnectDiscordCommand implements CommandExecutor{
         if(MinecraftDiscordConnect.client.isLoggedIn()){
             MinecraftDiscordConnect.client.logout();
             HandlerList.unregisterAll(MinecraftDiscordConnect.instance);
-            cs.sendMessage(ChatColor.BLUE + "[Discord] " + ChatColor.WHITE + "Disconnected from your Discord Bot!");
+            cs.sendMessage(ChatColor.BLUE + "[Discord] " + ChatColor.RESET + "Disconnected your Discord Bot!");
+            cs.getServer().broadcastMessage(ChatColor.BLUE + "[Discord] " + ChatColor.GRAY + "The Discord Bot was disconnected by " + ChatColor.RED + cs.getName() + ChatColor.GRAY + "!");
         }else
-            cs.sendMessage(ChatColor.BLUE + "[Discord] " + ChatColor.WHITE + "Your Discord Bot is already disconnected!");
+            cs.sendMessage(ChatColor.BLUE + "[Discord] " + ChatColor.RESET + "Your Discord Bot is already disconnected!");
         return true;
     }
 

@@ -18,10 +18,10 @@ public class ConnectDiscordCommand implements CommandExecutor{
         if(!MinecraftDiscordConnect.client.isLoggedIn()){
             MinecraftDiscordConnect.client = DiscordClient.createClient(MinecraftDiscordConnect.config.token);
             MinecraftDiscordConnect.instance.registerDiscordListeners();
-            MinecraftDiscordConnect.instance.registerMinecraftListeners();
-            cs.sendMessage(ChatColor.BLUE + "[Discord] " + ChatColor.WHITE + "Connected to your Discord Bot!");
+            cs.sendMessage(ChatColor.BLUE + "[Discord] " + ChatColor.GRAY + "Connected your Discord Bot!");
+            cs.getServer().broadcastMessage(ChatColor.BLUE + "[Discord] " + ChatColor.GRAY + "The Discord Bot was connected by " + ChatColor.GREEN + cs.getName() + ChatColor.GRAY + "!");
         }else
-            cs.sendMessage(ChatColor.BLUE + "[Discord] " + ChatColor.WHITE + "Your Discord Bot is already connected!");
+            cs.sendMessage(ChatColor.BLUE + "[Discord] " + ChatColor.GRAY + "Your Discord Bot is already connected!");
         return true;
     }
 
