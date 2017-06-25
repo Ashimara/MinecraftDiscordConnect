@@ -39,6 +39,7 @@ public class MinecraftDiscordConnect extends JavaPlugin {
 
     @Override
     public void onDisable() {
+        client.logout();
         System.out.println("[MinecraftDiscordConnect] Disabled Plugin (v. " + getDescription().getVersion() + ")");
     }
     
