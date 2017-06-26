@@ -38,6 +38,7 @@ public class MinecraftDiscordConnect extends JavaPlugin {
         }
         
         client = DiscordClient.createClient(config.token); 
+        if(!config.connectAutoConnect) client.idle();
         
         registerDiscordListeners();
         registerCommands();
@@ -45,10 +46,7 @@ public class MinecraftDiscordConnect extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        if(client.isLoggedIn()){
-            Connector.sendDiscordMessage("This Bot is now disonnected");
-            client.logout();
-        }
+        client.logout();
         System.out.println("[MinecraftDiscordConnect] Disabled Plugin (v. " + getDescription().getVersion() + ")");
     }
     

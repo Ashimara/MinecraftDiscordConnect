@@ -13,12 +13,13 @@ public class Config {
     public List<String> sendChannelIDs;
     public List<String> recieveChannelIDs;
     
+    public boolean connectAutoConnect;
     public boolean connectJoinMessages;
     public boolean connectChatMessages;
     public boolean connectDeathMessages;
     public boolean connectDiscordMessages;
-    
     public boolean connectOriginalUser;
+    
     
     public String joinMessage;
     public String quitMessage;
@@ -32,11 +33,11 @@ public class Config {
     public String sendChannelIDsPath;
     public String recieveChannelIDsPath;
     
+    public String connectAutoConnectPath;
     public String connectJoinMessagesPath;
     public String connectChatMessagesPath;
     public String connectDeathMessagesPath;
     public String connectDiscordMessagesPath;
-    
     public String connectOriginalUserPath;
     
     public String joinMessagePath;
@@ -50,11 +51,11 @@ public class Config {
         sendChannelIDsPath = "discord.send.channel-ids";
         recieveChannelIDsPath = "discord.recieve.channel-ids";
         
+        connectAutoConnectPath = "settings.connect.autoConnect";
         connectJoinMessagesPath = "settings.connect.joinMessages";
         connectChatMessagesPath = "settings.connect.chatMessages";
         connectDeathMessagesPath = "settings.connect.deathMessages";
         connectDiscordMessagesPath = "settings.connect.discordMessages";
-        
         connectOriginalUserPath = "settings.connect.originalUser";
         
         joinMessagePath = "messages.joinMessage";
@@ -70,11 +71,11 @@ public class Config {
         MinecraftDiscordConnect.instance.getConfig().addDefault(sendChannelIDsPath, defaultID.clone());
         MinecraftDiscordConnect.instance.getConfig().addDefault(recieveChannelIDsPath, defaultID.clone());
         
+        MinecraftDiscordConnect.instance.getConfig().addDefault(connectAutoConnectPath, true);
         MinecraftDiscordConnect.instance.getConfig().addDefault(connectJoinMessagesPath, true);
         MinecraftDiscordConnect.instance.getConfig().addDefault(connectChatMessagesPath, true);
         MinecraftDiscordConnect.instance.getConfig().addDefault(connectDeathMessagesPath, true);
         MinecraftDiscordConnect.instance.getConfig().addDefault(connectDiscordMessagesPath, true);
-        
         MinecraftDiscordConnect.instance.getConfig().addDefault(connectOriginalUserPath, true);
         
         MinecraftDiscordConnect.instance.getConfig().addDefault(joinMessagePath, "%u% joined the game");
@@ -95,11 +96,11 @@ public class Config {
         sendChannelIDs = MinecraftDiscordConnect.instance.getConfig().getStringList(sendChannelIDsPath);
         recieveChannelIDs = MinecraftDiscordConnect.instance.getConfig().getStringList(recieveChannelIDsPath);
         
+        connectAutoConnect = MinecraftDiscordConnect.instance.getConfig().getBoolean(connectAutoConnectPath);
         connectJoinMessages = MinecraftDiscordConnect.instance.getConfig().getBoolean(connectJoinMessagesPath);
         connectChatMessages = MinecraftDiscordConnect.instance.getConfig().getBoolean(connectChatMessagesPath);
         connectDeathMessages = MinecraftDiscordConnect.instance.getConfig().getBoolean(connectDeathMessagesPath);
         connectDiscordMessages = MinecraftDiscordConnect.instance.getConfig().getBoolean(connectDiscordMessagesPath);
-        
         connectOriginalUser = MinecraftDiscordConnect.instance.getConfig().getBoolean(connectOriginalUserPath);
         
         joinMessage = MinecraftDiscordConnect.instance.getConfig().getString(joinMessagePath); 

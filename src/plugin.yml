@@ -1,5 +1,5 @@
 name: MinecraftDiscordConnect
-version: 1.0.5
+version: 1.1.0
 author: Sorp
 authors: [Sorp, Ashimara]
 website: https://github.com/sorp123/MinecraftDiscordConnect
@@ -7,9 +7,9 @@ main: eu.sorp.minecraftdiscordconnect.MinecraftDiscordConnect
 load: STARTUP
 commands:
   discordbot:
-    description: Handles the connection of your Discord Bot
+    description: Sets the state of your Discord Bot
     permission: minecraftdiscordconnect.command.discord.bot
-    usage: /discordbot <connect/disconnect>
+    usage: /discordbot <enable/diable>
   discordchannelids:
     description: Edits your ChannelIDs
     permission: minecraftdiscordconnect.command.discord.channelids

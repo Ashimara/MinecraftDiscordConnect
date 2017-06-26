@@ -12,6 +12,12 @@ import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedE
  */
 public class MessageListener implements IListener<MessageReceivedEvent>{
 
+    public static MessageListener instance;
+    
+    public MessageListener(){
+        instance = this;
+    }
+    
     @Override
     public void handle(MessageReceivedEvent event) {
         for(String channelID : MinecraftDiscordConnect.config.recieveChannelIDs){

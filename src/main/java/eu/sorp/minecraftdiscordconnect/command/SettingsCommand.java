@@ -18,6 +18,9 @@ public class SettingsCommand implements TabExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if(args.length == 1){
             switch(args[0]){
+                case "autoConnect":
+                    sender.sendMessage(args[0] + " = " + MinecraftDiscordConnect.config.connectAutoConnect);
+                    break;
                 case "joinMessages":
                     sender.sendMessage(args[0] + " = " + MinecraftDiscordConnect.config.connectJoinMessages);
                     break;
@@ -42,6 +45,12 @@ public class SettingsCommand implements TabExecutor {
                 return false;
             boolean setting = Boolean.parseBoolean(args[1]);
             switch(args[0]){
+                case "autoConnect":
+                    MinecraftDiscordConnect.instance.getConfig().set(MinecraftDiscordConnect.config.connectAutoConnectPath, setting);
+                    MinecraftDiscordConnect.instance.saveConfig();
+                    MinecraftDiscordConnect.instance.reloadConfig();
+                    MinecraftDiscordConnect.config.connectAutoConnect = MinecraftDiscordConnect.instance.getConfig().getBoolean(MinecraftDiscordConnect.config.connectAutoConnectPath);
+                    break;
                 case "joinMessages":
                     MinecraftDiscordConnect.instance.getConfig().set(MinecraftDiscordConnect.config.connectJoinMessagesPath, setting);
                     MinecraftDiscordConnect.instance.saveConfig();
@@ -85,6 +94,7 @@ public class SettingsCommand implements TabExecutor {
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
         List<String> list = new ArrayList<>();
         if(args.length == 1){
+            if("autoConnect".startsWith(args[0]))list.add("autoConnect");
             if("joinMessages".startsWith(args[0]))list.add("joinMessages");
             if("chatMessages".startsWith(args[0]))list.add("chatMessages");
             if("deathMessages".startsWith(args[0]))list.add("deathMessages");
