@@ -19,25 +19,27 @@ public class DiscordCommand implements TabExecutor{
     
     @Override
     public boolean onCommand(CommandSender cs, Command cmnd, String string, String[] strings) {
-        if(strings[0].equals("connect")){
-            if(!MinecraftDiscordConnect.client.isLoggedIn()){
-                MinecraftDiscordConnect.client = DiscordClient.createClient(MinecraftDiscordConnect.config.token);
-                MinecraftDiscordConnect.instance.registerDiscordListeners();
-                cs.sendMessage(ChatColor.BLUE + "[Discord] " + ChatColor.GRAY + "Connected your Discord Bot!");
-                cs.getServer().broadcastMessage(ChatColor.BLUE + "[Discord] " + ChatColor.GRAY + "The Discord Bot was connected by " + ChatColor.GREEN + cs.getName() + ChatColor.GRAY + "!");
-            }else
-                cs.sendMessage(ChatColor.BLUE + "[Discord] " + ChatColor.GRAY + "Your Discord Bot is already connected!");
-            return true;
-        }else if(strings[0].equals("disconnect")){
-            if(MinecraftDiscordConnect.client.isLoggedIn()){
-                Connector.sendDiscordMessage("This Bot is now disonnected");
-                MinecraftDiscordConnect.client.logout();
-                HandlerList.unregisterAll(MinecraftDiscordConnect.instance);
-                cs.sendMessage(ChatColor.BLUE + "[Discord] " + ChatColor.GRAY + "Disconnected your Discord Bot!");
-                cs.getServer().broadcastMessage(ChatColor.BLUE + "[Discord] " + ChatColor.GRAY + "The Discord Bot was disconnected by " + ChatColor.RED + cs.getName() + ChatColor.GRAY + "!");
-            }else
-                cs.sendMessage(ChatColor.BLUE + "[Discord] " + ChatColor.GRAY + "Your Discord Bot is already disconnected!");
-            return true;
+        if(strings.length >= 1){
+            if(strings[0].equals("connect")){
+                if(!MinecraftDiscordConnect.client.isLoggedIn()){
+                    MinecraftDiscordConnect.client = DiscordClient.createClient(MinecraftDiscordConnect.config.token);
+                    MinecraftDiscordConnect.instance.registerDiscordListeners();
+                    cs.sendMessage(ChatColor.BLUE + "[Discord] " + ChatColor.GRAY + "Connected your Discord Bot!");
+                    cs.getServer().broadcastMessage(ChatColor.BLUE + "[Discord] " + ChatColor.GRAY + "The Discord Bot was connected by " + ChatColor.GREEN + cs.getName() + ChatColor.GRAY + "!");
+                }else
+                    cs.sendMessage(ChatColor.BLUE + "[Discord] " + ChatColor.GRAY + "Your Discord Bot is already connected!");
+                return true;
+            }else if(strings[0].equals("disconnect")){
+                if(MinecraftDiscordConnect.client.isLoggedIn()){
+                    Connector.sendDiscordMessage("This Bot is now disonnected");
+                    MinecraftDiscordConnect.client.logout();
+                    HandlerList.unregisterAll(MinecraftDiscordConnect.instance);
+                    cs.sendMessage(ChatColor.BLUE + "[Discord] " + ChatColor.GRAY + "Disconnected your Discord Bot!");
+                    cs.getServer().broadcastMessage(ChatColor.BLUE + "[Discord] " + ChatColor.GRAY + "The Discord Bot was disconnected by " + ChatColor.RED + cs.getName() + ChatColor.GRAY + "!");
+                }else
+                    cs.sendMessage(ChatColor.BLUE + "[Discord] " + ChatColor.GRAY + "Your Discord Bot is already disconnected!");
+                return true;
+            }
         }
         return false;
     }
