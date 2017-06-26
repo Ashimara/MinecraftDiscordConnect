@@ -44,8 +44,8 @@ public class ChannelIDsCommand implements TabExecutor{
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
         List<String> list = new ArrayList<>();
         if(args.length == 1){
-            list.add("send");
-            list.add("recieve");
+            if("send".startsWith(args[0]))list.add("send");
+            if("recieve".startsWith(args[0]))list.add("recieve");
             return list;
         }
         return list;

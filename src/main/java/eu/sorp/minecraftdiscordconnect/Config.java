@@ -18,7 +18,7 @@ public class Config {
     public boolean connectDeathMessages;
     public boolean connectDiscordMessages;
     
-    public boolean displayUserUnnicked;
+    public boolean connectOriginalUser;
     
     public String joinMessage;
     public String quitMessage;
@@ -37,7 +37,7 @@ public class Config {
     public String connectDeathMessagesPath;
     public String connectDiscordMessagesPath;
     
-    public String displayUserUnnickedPath;
+    public String connectOriginalUserPath;
     
     public String joinMessagePath;
     public String quitMessagePath;
@@ -55,7 +55,7 @@ public class Config {
         connectDeathMessagesPath = "settings.connect.deathMessages";
         connectDiscordMessagesPath = "settings.connect.discordMessages";
         
-        displayUserUnnickedPath = "settings.display.userUnnicked";
+        connectOriginalUserPath = "settings.connect.originalUser";
         
         joinMessagePath = "messages.joinMessage";
         quitMessagePath = "messages.quitMessage";
@@ -75,7 +75,7 @@ public class Config {
         MinecraftDiscordConnect.instance.getConfig().addDefault(connectDeathMessagesPath, true);
         MinecraftDiscordConnect.instance.getConfig().addDefault(connectDiscordMessagesPath, true);
         
-        MinecraftDiscordConnect.instance.getConfig().addDefault(displayUserUnnickedPath, true);
+        MinecraftDiscordConnect.instance.getConfig().addDefault(connectOriginalUserPath, true);
         
         MinecraftDiscordConnect.instance.getConfig().addDefault(joinMessagePath, "%u% joined the game");
         MinecraftDiscordConnect.instance.getConfig().addDefault(quitMessagePath, "%u% left the game");
@@ -100,7 +100,7 @@ public class Config {
         connectDeathMessages = MinecraftDiscordConnect.instance.getConfig().getBoolean(connectDeathMessagesPath);
         connectDiscordMessages = MinecraftDiscordConnect.instance.getConfig().getBoolean(connectDiscordMessagesPath);
         
-        displayUserUnnicked = MinecraftDiscordConnect.instance.getConfig().getBoolean(displayUserUnnickedPath);
+        connectOriginalUser = MinecraftDiscordConnect.instance.getConfig().getBoolean(connectOriginalUserPath);
         
         joinMessage = MinecraftDiscordConnect.instance.getConfig().getString(joinMessagePath); 
         quitMessage = MinecraftDiscordConnect.instance.getConfig().getString(quitMessagePath); 

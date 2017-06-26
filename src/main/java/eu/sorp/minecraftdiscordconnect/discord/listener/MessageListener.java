@@ -17,7 +17,7 @@ public class MessageListener implements IListener<MessageReceivedEvent>{
         for(String channelID : MinecraftDiscordConnect.config.recieveChannelIDs){
             if(event.getChannel().getLongID() == Long.parseLong(channelID)){ 
                 String discordMsg = MinecraftDiscordConnect.config.discordMessage; 
-                if(event.getAuthor().getDisplayName(event.getGuild()).equals(event.getAuthor().getName())||!MinecraftDiscordConnect.config.displayUserUnnicked)
+                if(event.getAuthor().getDisplayName(event.getGuild()).equals(event.getAuthor().getName())||!MinecraftDiscordConnect.config.connectOriginalUser)
                     discordMsg = discordMsg.replaceAll("%u%", event.getAuthor().getDisplayName(event.getGuild()));
                 else
                     discordMsg = discordMsg.replaceAll("%u%", event.getAuthor().getDisplayName(event.getGuild()) + " [" + event.getAuthor().getName() + "]");
