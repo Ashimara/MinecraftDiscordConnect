@@ -15,27 +15,74 @@ public class Config {
     
     public boolean connectJoinMessages;
     public boolean connectChatMessages;
+    public boolean connectDeathMessages;
     public boolean connectDiscordMessages;
+    
+    public boolean displayUserUnnicked;
     
     public String joinMessage;
     public String quitMessage;
     public String chatMessage;
+    public String broadcastMessage;
     public String discordMessage;
     
+    
+    
+    public String tokenPath;
+    public String sendChannelIDsPath;
+    public String recieveChannelIDsPath;
+    
+    public String connectJoinMessagesPath;
+    public String connectChatMessagesPath;
+    public String connectDeathMessagesPath;
+    public String connectDiscordMessagesPath;
+    
+    public String displayUserUnnickedPath;
+    
+    public String joinMessagePath;
+    public String quitMessagePath;
+    public String chatMessagePath;
+    public String broadcastMessagePath;
+    public String discordMessagePath;
+    
     public Config(){
+        tokenPath = "discord.bot-token";
+        sendChannelIDsPath = "discord.send.channel-ids";
+        recieveChannelIDsPath = "discord.recieve.channel-ids";
+        
+        connectJoinMessagesPath = "settings.connect.joinMessages";
+        connectChatMessagesPath = "settings.connect.chatMessages";
+        connectDeathMessagesPath = "settings.connect.deathMessages";
+        connectDiscordMessagesPath = "settings.connect.discordMessages";
+        
+        displayUserUnnickedPath = "settings.display.userUnnicked";
+        
+        joinMessagePath = "messages.joinMessage";
+        quitMessagePath = "messages.quitMessage";
+        chatMessagePath = "messages.chatMessage";
+        broadcastMessagePath = "messages.broadcastMessage";
+        discordMessagePath = "messages.discordMessage";
+        
         ArrayList<String> defaultID = new ArrayList<>();
         defaultID.add("INSERT-ID-HERE");
         
-        MinecraftDiscordConnect.instance.getConfig().addDefault("discord.bot-token", "INSERT-TOKEN-HERE");
-        MinecraftDiscordConnect.instance.getConfig().addDefault("discord.send.channel-ids", defaultID.clone());
-        MinecraftDiscordConnect.instance.getConfig().addDefault("discord.recieve.channel-ids", defaultID.clone());
-        MinecraftDiscordConnect.instance.getConfig().addDefault("settings.connectJoinMessages", true);
-        MinecraftDiscordConnect.instance.getConfig().addDefault("settings.connectChatMessages", true);
-        MinecraftDiscordConnect.instance.getConfig().addDefault("settings.connectDiscordMessages", true);
-        MinecraftDiscordConnect.instance.getConfig().addDefault("messages.joinMessage", "%u% joined the game");
-        MinecraftDiscordConnect.instance.getConfig().addDefault("messages.quitMessage", "%u% left the game");
-        MinecraftDiscordConnect.instance.getConfig().addDefault("messages.chatMessage", "<%u%> %m%");
-        MinecraftDiscordConnect.instance.getConfig().addDefault("messages.discordMessage", "[Discord] <%u%> %m%");
+        MinecraftDiscordConnect.instance.getConfig().addDefault(tokenPath, "INSERT-TOKEN-HERE");
+        MinecraftDiscordConnect.instance.getConfig().addDefault(sendChannelIDsPath, defaultID.clone());
+        MinecraftDiscordConnect.instance.getConfig().addDefault(recieveChannelIDsPath, defaultID.clone());
+        
+        MinecraftDiscordConnect.instance.getConfig().addDefault(connectJoinMessagesPath, true);
+        MinecraftDiscordConnect.instance.getConfig().addDefault(connectChatMessagesPath, true);
+        MinecraftDiscordConnect.instance.getConfig().addDefault(connectDeathMessagesPath, true);
+        MinecraftDiscordConnect.instance.getConfig().addDefault(connectDiscordMessagesPath, true);
+        
+        MinecraftDiscordConnect.instance.getConfig().addDefault(displayUserUnnickedPath, true);
+        
+        MinecraftDiscordConnect.instance.getConfig().addDefault(joinMessagePath, "%u% joined the game");
+        MinecraftDiscordConnect.instance.getConfig().addDefault(quitMessagePath, "%u% left the game");
+        MinecraftDiscordConnect.instance.getConfig().addDefault(chatMessagePath, "<%u%> %m%");
+        MinecraftDiscordConnect.instance.getConfig().addDefault(broadcastMessagePath, "[%u%] %m%");
+        MinecraftDiscordConnect.instance.getConfig().addDefault(discordMessagePath, "[Discord] <%u%> %m%");
+        
         MinecraftDiscordConnect.instance.getConfig().options().copyDefaults(true);
         MinecraftDiscordConnect.instance.saveConfig();
         
@@ -44,16 +91,22 @@ public class Config {
     }
     
     private void read(){
-        token = MinecraftDiscordConnect.instance.getConfig().getString("discord.bot-token"); 
-        sendChannelIDs = MinecraftDiscordConnect.instance.getConfig().getStringList("discord.send.channel-ids");
-        recieveChannelIDs = MinecraftDiscordConnect.instance.getConfig().getStringList("discord.recieve.channel-ids");
-        connectJoinMessages = MinecraftDiscordConnect.instance.getConfig().getBoolean("settings.connectJoinMessages");
-        connectChatMessages = MinecraftDiscordConnect.instance.getConfig().getBoolean("settings.connectChatMessages");
-        connectDiscordMessages = MinecraftDiscordConnect.instance.getConfig().getBoolean("settings.connectDiscordMessages");
-        joinMessage = MinecraftDiscordConnect.instance.getConfig().getString("messages.joinMessage"); 
-        quitMessage = MinecraftDiscordConnect.instance.getConfig().getString("messages.quitMessage"); 
-        chatMessage = MinecraftDiscordConnect.instance.getConfig().getString("messages.chatMessage"); 
-        discordMessage = MinecraftDiscordConnect.instance.getConfig().getString("messages.discordMessage"); 
+        token = MinecraftDiscordConnect.instance.getConfig().getString(tokenPath); 
+        sendChannelIDs = MinecraftDiscordConnect.instance.getConfig().getStringList(sendChannelIDsPath);
+        recieveChannelIDs = MinecraftDiscordConnect.instance.getConfig().getStringList(recieveChannelIDsPath);
+        
+        connectJoinMessages = MinecraftDiscordConnect.instance.getConfig().getBoolean(connectJoinMessagesPath);
+        connectChatMessages = MinecraftDiscordConnect.instance.getConfig().getBoolean(connectChatMessagesPath);
+        connectDeathMessages = MinecraftDiscordConnect.instance.getConfig().getBoolean(connectDeathMessagesPath);
+        connectDiscordMessages = MinecraftDiscordConnect.instance.getConfig().getBoolean(connectDiscordMessagesPath);
+        
+        displayUserUnnicked = MinecraftDiscordConnect.instance.getConfig().getBoolean(displayUserUnnickedPath);
+        
+        joinMessage = MinecraftDiscordConnect.instance.getConfig().getString(joinMessagePath); 
+        quitMessage = MinecraftDiscordConnect.instance.getConfig().getString(quitMessagePath); 
+        chatMessage = MinecraftDiscordConnect.instance.getConfig().getString(chatMessagePath); 
+        broadcastMessage = MinecraftDiscordConnect.instance.getConfig().getString(broadcastMessagePath); 
+        discordMessage = MinecraftDiscordConnect.instance.getConfig().getString(discordMessagePath); 
     }
     
 }

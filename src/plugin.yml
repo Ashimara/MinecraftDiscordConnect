@@ -1,23 +1,17 @@
 name: MinecraftDiscordConnect
-version: 1.0.2
+version: 1.0.4
 author: Sorp
 authors: [Sorp, Ashimara]
+website: https://github.com/sorp123/MinecraftDiscordConnect
 main: eu.sorp.minecraftdiscordconnect.MinecraftDiscordConnect
+load: STARTUP
 commands:
-  discordconnect:
-    description: Connects the server to your Discord Bot
-    permission: minecraftdiscordconnect.command.discordconnect
-    usage: /discordconnect
-  discorddisconnect:
-    description: Disconnects the server from your Discord Bot
-    permission: minecraftdiscordconnect.command.discorddisconnect
-    usage: /discorddisconnect
-  sendchannelids:
-    description: Edits your SendChannelIDs
-    permission: minecraftdiscordconnect.command.discorddisconnect
-    usage: /sendchannelids <ChannelIDs...>
-  recievechannelids:
-    description: Edits your RecieveChannelIDs
-    permission: minecraftdiscordconnect.command.discorddisconnect
-    usage: /recievechannelids <ChannelIDs...>
+  discord:
+    description: Handles the connection of your Discord Bot
+    permission: minecraftdiscordconnect.command.discord.connections
+    usage: /discord <connect/disconnect>
+  channelids:
+    description: Edits your ChannelIDs
+    permission: minecraftdiscordconnect.command.discord.channelids
+    usage: /channelids <send/recieve> <ChannelIDs...>
   
