@@ -1,13 +1,13 @@
 package eu.sorp.minecraftdiscordconnect;
 
-import eu.sorp.minecraftdiscordconnect.command.ConnectDiscordCommand;
-import eu.sorp.minecraftdiscordconnect.command.DisconnectDiscordCommand;
-import eu.sorp.minecraftdiscordconnect.command.RecieveChannelIDsCommand;
-import eu.sorp.minecraftdiscordconnect.command.SendChannelIDsCommand;
+import eu.sorp.minecraftdiscordconnect.command.ChannelIDsCommand;
+import eu.sorp.minecraftdiscordconnect.command.DiscordCommand;
 import eu.sorp.minecraftdiscordconnect.discord.DiscordClient;
 import eu.sorp.minecraftdiscordconnect.discord.listener.MessageListener;
 import eu.sorp.minecraftdiscordconnect.discord.listener.ReadyListener;
+import eu.sorp.minecraftdiscordconnect.listener.BroadcastListener;
 import eu.sorp.minecraftdiscordconnect.listener.ChatListener;
+import eu.sorp.minecraftdiscordconnect.listener.DeathListener;
 import eu.sorp.minecraftdiscordconnect.listener.JoinListener;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -44,6 +44,7 @@ public class MinecraftDiscordConnect extends JavaPlugin {
 
     @Override
     public void onDisable() {
+        Connector.sendDiscordMessage("This Bot is now disonnected");
         client.logout();
         System.out.println("[MinecraftDiscordConnect] Disabled Plugin (v. " + getDescription().getVersion() + ")");
     }
@@ -51,7 +52,9 @@ public class MinecraftDiscordConnect extends JavaPlugin {
     public void registerMinecraftListeners(){
         PluginManager pluginManager = getServer().getPluginManager();
         if(config.connectChatMessages) pluginManager.registerEvents(new ChatListener(), this);
+        if(config.connectChatMessages) pluginManager.registerEvents(new BroadcastListener(), this);
         if(config.connectJoinMessages) pluginManager.registerEvents(new JoinListener(), this);
+        if(config.connectDeathMessages) pluginManager.registerEvents(new DeathListener(), this);
     }
     
     public void registerDiscordListeners(){
@@ -61,10 +64,8 @@ public class MinecraftDiscordConnect extends JavaPlugin {
     }
     
     public void registerCommands(){
-        getCommand("discordconnect").setExecutor(new ConnectDiscordCommand());
-        getCommand("discorddisconnect").setExecutor(new DisconnectDiscordCommand());
-        getCommand("sendchannelids").setExecutor(new SendChannelIDsCommand());
-        getCommand("recievechannelids").setExecutor(new RecieveChannelIDsCommand());
+        getCommand("discord").setExecutor(new DiscordCommand());
+        getCommand("channelids").setExecutor(new ChannelIDsCommand());
     }
     
 }

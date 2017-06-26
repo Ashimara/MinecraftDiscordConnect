@@ -16,8 +16,11 @@ public class MessageListener implements IListener<MessageReceivedEvent>{
     public void handle(MessageReceivedEvent event) {
         for(String channelID : MinecraftDiscordConnect.config.recieveChannelIDs){
             if(event.getChannel().getLongID() == Long.parseLong(channelID)){ 
-                String discordMsg = MinecraftDiscordConnect.config.discordMessage;
-                discordMsg = discordMsg.replaceAll("%u%", event.getAuthor().getDisplayName(event.getGuild()));
+                String discordMsg = MinecraftDiscordConnect.config.discordMessage; 
+                if(event.getAuthor().getDisplayName(event.getGuild()).equals(event.getAuthor().getName())||!MinecraftDiscordConnect.config.displayUserUnnicked)
+                    discordMsg = discordMsg.replaceAll("%u%", event.getAuthor().getDisplayName(event.getGuild()));
+                else
+                    discordMsg = discordMsg.replaceAll("%u%", event.getAuthor().getDisplayName(event.getGuild()) + " [" + event.getAuthor().getName() + "]");
                 discordMsg = discordMsg.replaceAll("%m%", event.getMessage().getContent());
                 discordMsg = ChatColor.translateAlternateColorCodes('&', discordMsg);
                 if(event.getMessage().getContent().length() >= 1)
